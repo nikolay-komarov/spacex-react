@@ -1,18 +1,32 @@
 import React from 'react';
 
 import './footer.css';
-import logo from '../../img/logo.svg';
 
-const Footer = () => {
+const Footer = (props) => {
+	const {
+		elon_twitter: elonTwitter,
+		twitter,
+		flickr,
+		website,
+	} = props;
+
   return (
     <footer className="footer">
-	  	<img src={logo} alt="logo Space X" className="logo"/>
+	  	<img src="./img/logo.svg" alt="logo Space X" className="logo"/>
 	  	<nav className="footer-nav">
 	  		<ul className="list">
-	  			<li className="item"><a href="#" rel="noopener noreferrer" target='_blank' className="item-link">Elon Musk Twitter</a></li>
-	  			<li className="item"><a href="#" rel="noopener noreferrer" target='_blank' className="item-link">Twitter</a></li>
-	  			<li className="item"><a href="#" rel="noopener noreferrer" target='_blank' className="item-link">Flickr</a></li>
-	  			<li className="item"><a href="#" rel="noopener noreferrer" target='_blank' className="item-link">Website</a></li>
+	  			<li className="item">
+						<a href={elonTwitter} rel="noopener noreferrer" target='_blank' className="item-link">Elon Musk Twitter</a>
+					</li>
+	  			<li className="item">
+						<a href={twitter} rel="noopener noreferrer" target='_blank' className="item-link">Twitter</a>
+					</li>
+	  			<li className="item">
+						<a href={flickr} rel="noopener noreferrer" target='_blank' className="item-link">Flickr</a>
+					</li>
+	  			<li className="item">
+						<a href={website} rel="noopener noreferrer" target='_blank' className="item-link">Website</a>
+					</li>
 	  		</ul>
 	  	</nav>
 	  	<p className="footer-text">
