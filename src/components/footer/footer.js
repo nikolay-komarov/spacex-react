@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './footer.css';
+import logo from '../../img/logo.svg';
 
 const Footer = (props) => {
 	const {
@@ -12,7 +13,7 @@ const Footer = (props) => {
 
   return (
     <footer className="footer">
-	  	<img src="./img/logo.svg" alt="logo Space X" className="logo"/>
+	  	<img src={logo} alt="logo Space X" className="logo"/>
 	  	<nav className="footer-nav">
 	  		<ul className="list">
 	  			<li className="item">

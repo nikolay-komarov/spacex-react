@@ -1,27 +1,51 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
+import Youtube from 'react-youtube';
+
+import useLaunches from '../useLaunches/use-launches';
 import Main from '../main/main';
 
 import './details.css';
 
-const Details = () => {
+const Details = (props) => {
+	const [launch, setLaunch] = useState(null);
+	const {getLaunch} = useLaunches();
+	useEffect(() => {
+		setLaunch(getLaunch(props.match.params.id));
+	}, [getLaunch, props.match.params.id]);
+
+	const history = useHistory();
+
+	if (!launch) {
+		return (
+			<div>Loading...</div>
+		)
+	}
+
   return (
 		<>
-			<Main />
+			<Main name={launch.name} />
     	<main className="details">
 	  		<div className="container">
 	  			<div className="details-row">
 	  				<div className="details-image">
-	  					<img src="https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png" alt="" />
+	  					<img src={launch.links.patch.small} alt={launch.name} />
 	  				</div>
 	  				<div className="details-content">
-	  					<p className="details-description">Engine failure at 33 seconds and loss of vehicle</p>
+	  					<p className="details-description">{launch.details}</p>
 	  				</div>
 	  			</div>
-	  			<div>
-	  				<iframe title="video" className="details-youtube" width="560" height="315" src="https://www.youtube.com/embed/dLQ2tZEH6G0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
-	  			</div>
+					<Youtube
+						className='details-youtube'
+						width='560' height='315'
+						videoId={launch.links.youtube_id}
+					/>
 	  		</div>
-	  		<a href="calendar.html" className="button button-back">go back</a>
+	  		<a
+					className="button button-back"
+					onClick={history.goBack}
+				>go back</a>
 	  	</main>
 		</>
   );

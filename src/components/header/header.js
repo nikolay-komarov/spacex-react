@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
 
 import './header.css';
+import logo from '../../img/logo.svg';
 
 const Header = (props) => {
 	const {
@@ -16,7 +17,7 @@ const Header = (props) => {
 					to='/'
 				>
 	    		<img
-	    			src="./img/logo.svg"
+	    			src={logo}
 	    			alt="Logo Space X"
 	    			className="logo"
 	    		/>

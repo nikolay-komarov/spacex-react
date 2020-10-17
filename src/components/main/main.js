@@ -10,17 +10,14 @@ const video = {
 }
 
 const Main = (props) => {
-  const {rocket} = props;
+  const {
+    rocket,
+    name,
+  } = props;
 
   return (
     <section className="main">
-      <h1 className="title">
-        {
-          rocket
-            ? rocket
-            : ` SpaceX`
-        }
-      </h1>
+      <h1 className="title">{name || rocket}</h1>
       
       {
         rocket &&

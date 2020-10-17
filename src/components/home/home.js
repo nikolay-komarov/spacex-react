@@ -1,12 +1,9 @@
 import React from 'react';
 
 import './home.css';
-// import logo from '../../logo.svg'
-
+import logo from '../../img/logo.svg';
 
 const Home = (props) => {
-	console.log(props);
-
 	const {company} = props;
 
 	return (
@@ -14,7 +11,7 @@ const Home = (props) => {
 			<div className="container">
 				<hgroup className="title">
 					<h1>
-						<img className="logo-title" src="./img/logo.svg" alt={company.name}/>
+						<img className="logo-title" src={logo} alt={company.name}/>
 					</h1>
 					<h2 className="subtitle">
 						{company.summary}
@@ -81,6 +78,5 @@ const Home = (props) => {
 		</main>
 	);
 };
-
 
 export default Home;
